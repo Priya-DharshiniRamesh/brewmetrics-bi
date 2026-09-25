@@ -1,0 +1,44 @@
+table Dim_Product
+	lineageTag: 19886fba-4b05-45f6-b45e-4e0ac26c30d1
+
+	column category
+		dataType: string
+		lineageTag: f8a342bc-9d01-46ce-9fe6-df3a22663e23
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column item
+		dataType: string
+		lineageTag: fe015105-5333-44fc-9a43-e51722df30d4
+		summarizeBy: none
+		sourceColumn: item
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: string
+		lineageTag: ff35c188-628b-4f3e-8c79-528428108e97
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Product = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\DARSHINI\Downloads\brewmetrics_sales.csv"),[Delimiter=",", Columns=9, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"sale_id", Int64.Type}, {"date", type date}, {"city", type text}, {"store_format", type text}, {"category", type text}, {"item", type text}, {"quantity", Int64.Type}, {"unit_price", Int64.Type}, {"sales_amount", type number}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"category", "item"}),
+				    #"Added Custom" = Table.AddColumn(#"Removed Other Columns", "ProductKey", each [category] & "-" & [item]),
+				    #"Removed Duplicates" = Table.Distinct(#"Added Custom", {"ProductKey"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
