@@ -2,15 +2,55 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "07fca7ca025343c2bead",
   "position": {
-    "x": 885,
-    "y": 48,
-    "z": 1003,
+    "x": 1060,
+    "y": 70,
+    "z": 4000,
     "height": 270,
-    "width": 463,
-    "tabOrder": 1003
+    "width": 412.5,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Sales"
+                    }
+                  },
+                  "Property": "Average Sales per Transaction"
+                }
+              },
+              "queryRef": "Fact_Sales.Average Sales per Transaction",
+              "nativeQueryRef": "Average Sales per Transaction"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_Sales"
+                  }
+                },
+                "Property": "Average Sales per Transaction"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
     "drillFilterOtherVisuals": true
   }
 }

@@ -1,16 +1,6 @@
 table Dim_City
 	lineageTag: 0173306c-66e3-40a4-b9ff-d1ffcac9db8a
 
-	measure 'Average Transaction Value' =
-			
-			DIVIDE(
-			    [Total Sales],
-			    COUNTROWS(Fact_Sales)
-			)
-		lineageTag: 3eebf4ad-86b7-4ca0-b9fd-fa94b10f924f
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	column city
 		dataType: string
 		lineageTag: 6371df47-fe53-4125-9f81-174d134af4dd

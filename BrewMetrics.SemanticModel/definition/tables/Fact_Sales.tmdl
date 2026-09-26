@@ -38,11 +38,14 @@ table Fact_Sales
 		lineageTag: a4da347a-2055-4a04-a8ea-a8ce69a686e7
 
 	measure 'Average Sales per Transaction' =
+			
 			DIVIDE(
-				[Total Sales],
-				DISTINCTCOUNT(Fact_Sales[sale_id])
+			    [Total Sales],
+			    DISTINCTCOUNT(Fact_Sales[sale_id])
 			)
 		lineageTag: 5c6ba9e9-97e8-49f3-944a-e0a07bd327bc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column sale_id
 		dataType: int64

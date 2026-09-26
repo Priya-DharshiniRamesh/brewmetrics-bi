@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "cf396b2cc0bd05301cc5",
   "position": {
-    "x": 411.66666666666669,
-    "y": 48.333333333333336,
+    "x": 515,
+    "y": 70,
     "z": 1000,
-    "height": 270,
-    "width": 463.33333333333337,
+    "height": 322.5,
+    "width": 500,
     "tabOrder": 1000
   },
   "visual": {
@@ -147,112 +147,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "87b027f6ab029cda2491",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Dim_Date"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "date"
-                  }
-                },
-                "Hierarchy": "Date Hierarchy"
-              }
-            },
-            "Level": "Year"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "32c7549506ddb4c44d0e",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Dim_Date"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "date"
-                  }
-                },
-                "Hierarchy": "Date Hierarchy"
-              }
-            },
-            "Level": "Quarter"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5cada40c38ade9c00346",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Dim_Date"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "date"
-                  }
-                },
-                "Hierarchy": "Date Hierarchy"
-              }
-            },
-            "Level": "Month"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5792d75a6490ee5badb1",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_Sales"
-              }
-            },
-            "Property": "Total Sales"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f3978590523db6a4a1ed",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fact_Sales"
-              }
-            },
-            "Property": "MoM Sales Growth %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }
