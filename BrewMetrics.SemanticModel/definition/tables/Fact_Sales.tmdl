@@ -1,6 +1,22 @@
 table Fact_Sales
 	lineageTag: 06972525-bd9b-40e5-8b05-b7dd34de97f4
 
+	measure 'Total Sales' = SUM(Fact_Sales[sales_amount])
+		lineageTag: ...
+
+	measure 'MoM Sales Growth %' =
+			
+			VAR CurrentSales = [Total Sales]
+			VAR PreviousSales =
+			    CALCULATE(
+			        [Total Sales],
+			        PREVIOUSMONTH(Dim_Date[date])
+			    )
+			RETURN
+			    DIVIDE(CurrentSales - PreviousSales, PreviousSales)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 06972525-bd9b-40e5-8b05-b7dd34de97f4
+
 	column sale_id
 		dataType: int64
 		formatString: 0
