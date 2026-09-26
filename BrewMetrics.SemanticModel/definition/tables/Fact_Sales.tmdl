@@ -27,6 +27,16 @@ table Fact_Sales
 			)
 		lineageTag: c7380afd-592b-463a-9cc4-f0fcf79317ad
 
+	measure 'City Sales Rank' =
+			RANKX(
+				ALL(Dim_City[city]),
+				[Total Sales],
+				,
+				DESC,
+				DENSE
+			)
+		lineageTag: a4da347a-2055-4a04-a8ea-a8ce69a686e7
+
 	column sale_id
 		dataType: int64
 		formatString: 0
