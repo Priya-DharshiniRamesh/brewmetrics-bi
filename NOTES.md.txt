@@ -35,13 +35,22 @@ I checked the measure against the city field and Total Sales measure and used th
 
 ## Measure 4 – Average Sales per Transaction
 
-Copilot was used to suggest a DAX measure for calculating the average sales per transaction.
+### Copilot Suggestion
 
-Copilot identified `Fact_Sales[sale_id]` as the transaction identifier and suggested using `DISTINCTCOUNT` with `DIVIDE`.
+My initial approach used COUNTROWS to calculate the average sales per transaction:
 
-The suggested measure was reviewed and entered in Power BI. The same DAX measure was used successfully in Power BI and tested using a Card visual.
+```DAX
+Average Transaction Value =
+DIVIDE(
+    [Total Sales],
+    COUNTROWS(Fact_Sales)
+)
 
-The final measure is:
+##Correction
+
+After checking the data model, Copilot identified Fact_Sales[sale_id] as the transaction identifier. Therefore, the COUNTROWS approach was changed to DISTINCTCOUNT so that unique transactions are counted.
+
+The corrected measure is:
 
 Average Sales per Transaction =
 DIVIDE(
@@ -49,4 +58,6 @@ DIVIDE(
     DISTINCTCOUNT(Fact_Sales[sale_id])
 )
 
-No correction was required because the Copilot suggestion matched the data model and worked correctly in Power BI.
+The corrected measure was entered in Power BI and tested successfully using a Card visual.
+
+This corrected measure was used as the final Measure 4 in the Power BI report
