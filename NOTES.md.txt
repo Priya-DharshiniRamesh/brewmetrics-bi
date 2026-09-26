@@ -32,3 +32,21 @@ Copilot suggested a RANKX measure to rank cities based on Total Sales.
 The suggested measure uses ALL(Dim_City[city]) to compare all cities, DESC to rank the highest sales as rank 1, and DENSE for consecutive ranking when there are ties.
 
 I checked the measure against the city field and Total Sales measure and used the generated formula in the Power BI model.
+
+## Measure 4 – Average Sales per Transaction
+
+Copilot was used to suggest a DAX measure for calculating the average sales per transaction.
+
+Copilot identified `Fact_Sales[sale_id]` as the transaction identifier and suggested using `DISTINCTCOUNT` with `DIVIDE`.
+
+The suggested measure was reviewed and entered in Power BI. The same DAX measure was used successfully in Power BI and tested using a Card visual.
+
+The final measure is:
+
+Average Sales per Transaction =
+DIVIDE(
+    [Total Sales],
+    DISTINCTCOUNT(Fact_Sales[sale_id])
+)
+
+No correction was required because the Copilot suggestion matched the data model and worked correctly in Power BI.

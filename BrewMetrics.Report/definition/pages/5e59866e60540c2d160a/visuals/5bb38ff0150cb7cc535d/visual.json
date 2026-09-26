@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "5bb38ff0150cb7cc535d",
   "position": {
-    "x": 11,
-    "y": 315,
+    "x": 11.929582326544702,
+    "y": 374.58888505350365,
     "z": 1001,
-    "height": 286,
-    "width": 400,
+    "height": 388.9043838453573,
+    "width": 479.56920952709703,
     "tabOrder": 1001
   },
   "visual": {
@@ -65,7 +65,7 @@
               },
               "queryRef": "Dim_Date.date.Variation.Date Hierarchy.Quarter",
               "nativeQueryRef": "date Quarter",
-              "active": false
+              "active": true
             },
             {
               "field": {
@@ -91,7 +91,7 @@
               },
               "queryRef": "Dim_Date.date.Variation.Date Hierarchy.Month",
               "nativeQueryRef": "date Month",
-              "active": false
+              "active": true
             },
             {
               "field": {
@@ -117,7 +117,7 @@
               },
               "queryRef": "Dim_Date.date.Variation.Date Hierarchy.Day",
               "nativeQueryRef": "date Day",
-              "active": false
+              "active": true
             }
           ]
         },
@@ -125,22 +125,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim_City"
-                        }
-                      },
-                      "Property": "city"
+                    "SourceRef": {
+                      "Entity": "Fact_Sales"
                     }
                   },
-                  "Function": 5
+                  "Property": "Running Total Sales"
                 }
               },
-              "queryRef": "CountNonNull(Dim_City.city)",
-              "nativeQueryRef": "Count of city"
+              "queryRef": "Fact_Sales.Running Total Sales",
+              "nativeQueryRef": "Running Total Sales"
             }
           ]
         }
