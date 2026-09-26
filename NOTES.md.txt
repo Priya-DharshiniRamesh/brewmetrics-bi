@@ -1,0 +1,26 @@
+# DAX Development Notes
+# Copilot Notes
+
+## Measure 1: Month-over-Month Sales Growth
+
+### Copilot Suggestion
+
+GitHub Copilot checked the existing `Fact_Sales.tmdl` file and identified a month-over-month sales growth measure:
+
+```DAX
+MoM Sales Growth % =
+VAR PreviousMonthSales =
+    CALCULATE(
+        [Total Sales],
+        PREVIOUSMONTH('Dim_Date'[date])
+    )
+RETURN
+    DIVIDE([Total Sales] - PreviousMonthSales, PreviousMonthSales)
+
+## Measure 2 – Running Total Sales
+
+Copilot suggested a DAX measure to calculate the running total of sales over time.
+
+The suggested formula was reviewed and used after checking it with the Dim_Date table and Total Sales measure.
+
+The measure was tested in Power BI using a date-based visual, and the running total increased cumulatively over time.
