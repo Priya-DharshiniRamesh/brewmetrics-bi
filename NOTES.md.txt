@@ -46,7 +46,7 @@ DIVIDE(
     COUNTROWS(Fact_Sales)
 )
 
-##Correction
+## Correction
 
 After checking the data model, Copilot identified Fact_Sales[sale_id] as the transaction identifier. Therefore, the COUNTROWS approach was changed to DISTINCTCOUNT so that unique transactions are counted.
 
